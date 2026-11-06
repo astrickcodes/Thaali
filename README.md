@@ -7,9 +7,11 @@ An offline, installable Hindi–English food diary for the Bihari home kitchen. 
 - Open once while online, then install from Chrome’s **Install / Add to home screen** or Safari’s **Share → Add to Home Screen**. Offline cache requires HTTPS or localhost. A normal reload works offline; a forced reload can intentionally bypass a browser’s offline cache.
 - GitHub Pages: create a repository, upload these files at its root, then **Settings → Pages → Deploy from a branch → main / root**. No Actions/build needed. Relative URLs support project paths such as `/thaali-app/`. Live: [astrickcodes.github.io/Thaali/](https://astrickcodes.github.io/Thaali/), served from `main`.
 - Local preview: `python3 -m http.server 8875 --bind 127.0.0.1`, then visit `http://127.0.0.1:8875/`. Do not rely on `file://` for offline installation. Stop the preview with Ctrl-C.
-- The service worker now uses `thaali-static-v5`. Navigations and `index.html` are **network-first**, updating cached HTML when online and falling back to the last copy offline. Other static assets stay **cache-first**. This delivers new dish data to phones on their next online visit/reload after the worker updates, without touching diary storage. After changing static assets, bump `CACHE` again. An already-open tab needs a reload to show new data.
+- The service worker now uses `thaali-static-v7`. Navigations and `index.html` are **network-first**, updating cached HTML when online and falling back to the last copy offline. Other static assets stay **cache-first**. This delivers new dish data to phones on their next online visit/reload after the worker updates, without touching diary storage. After changing static assets, bump `CACHE` again. An already-open tab needs a reload to show new data.
 
 ## Plan a day / दिन की योजना
+
+Create a personal template with **Plan → My templates → + New template**: choose dishes per meal (including My dishes), adjust quantities/oil, and save; edit personal templates or **Copy & edit** suggested ones without changing the diary. Templates remain in JSON backups.
 
 Aaj stays focused on **eaten kcal vs target**, with one **Plan / योजना** button beside the date (up to seven days ahead). Plan opens suggested days first, then personal templates, with a short dish summary and fitted kcal/protein. Pick a day to review its meals and date, then **Add to plan** or **Cancel**. Where a plan exists, replace is selected by default; adding is also available, and eaten entries are always kept.
 
