@@ -7,7 +7,7 @@ An offline, installable Hindi–English food diary for the Bihari home kitchen. 
 - Open once while online, then install from Chrome’s **Install / Add to home screen** or Safari’s **Share → Add to Home Screen**. Offline cache requires HTTPS or localhost. A normal reload works offline; a forced reload can intentionally bypass a browser’s offline cache.
 - GitHub Pages: create a repository, upload these files at its root, then **Settings → Pages → Deploy from a branch → main / root**. No Actions/build needed. Relative URLs support project paths such as `/thaali-app/`. Live: [astrickcodes.github.io/Thaali/](https://astrickcodes.github.io/Thaali/), served from `main`.
 - Local preview: `python3 -m http.server 8875 --bind 127.0.0.1`, then visit `http://127.0.0.1:8875/`. Do not rely on `file://` for offline installation. Stop the preview with Ctrl-C.
-- The service worker now uses `thaali-static-v7`. Navigations and `index.html` are **network-first**, updating cached HTML when online and falling back to the last copy offline. Other static assets stay **cache-first**. This delivers new dish data to phones on their next online visit/reload after the worker updates, without touching diary storage. After changing static assets, bump `CACHE` again. An already-open tab needs a reload to show new data.
+- The service worker now uses `thaali-static-v8`. Navigations and `index.html` are **network-first**, updating cached HTML when online and falling back to the last copy offline. Other static assets stay **cache-first**. This delivers new dish data to phones on their next online visit/reload after the worker updates, without touching diary storage. After changing static assets, bump `CACHE` again. An already-open tab needs a reload to show new data.
 
 ## Plan a day / दिन की योजना
 
@@ -16,7 +16,7 @@ Create a personal template with **Plan → My templates → + New template**: ch
 Aaj stays focused on **eaten kcal vs target**, with one **Plan / योजना** button beside the date (up to seven days ahead). Plan opens suggested days first, then personal templates, with a short dish summary and fitted kcal/protein. Pick a day to review its meals and date, then **Add to plan** or **Cancel**. Where a plan exists, replace is selected by default; adding is also available, and eaten entries are always kept.
 
 - Planned rows are faded: tap to edit or **✓** when eaten. Swap/delete live inside the edit sheet. New dishes are automatically planned on future dates and eaten on today/past dates; edits preserve existing status. Only eaten food affects totals, charts, streaks and progress. Older diaries still migrate as eaten.
-- Small links at the bottom of Plan save this day as a template, copy yesterday’s food (with a preview), or clear just the plan (with confirmation). Rename/delete personal templates in **More → Templates**. Status and templates remain in JSON backups.
+- Small links at the bottom of Plan save this day as a template, copy yesterday’s food (with a preview), or clear just the plan (with confirmation). Rename/delete personal templates in **More → My templates**. Status and templates remain in JSON backups.
 - Ten suggested days: Ghar ka saadharan din, Halka din, Sattu/chana/paneer, Litti-chokha Sunday, Office tiffin, Anda din, Chicken din, Machhli-bhaat din, Mutton Sunday, Makuni/ghugni. Tiny veg/egg/non-veg tags distinguish them. Fitting adjusts grains/dal in half portions, keeps vegetables unchanged, and caps oily staples at two servings. **Halka din only scales down**, never above its default portions.
 - The dish sheet shows one short remaining-calorie line (red when over), omitted in target-free tracking mode.
 
@@ -63,3 +63,5 @@ November 2026 additions: headless laptop Chromium passed searches for `dosa`, `s
 Existing-solution preflight: wger is maintained but server-backed and not a single-file, local-only Bihari PWA. Aahar was viewed once for screen inspiration only; no code copied.
 
 **Estimates, not medical advice.** Not a clinical diet, micronutrient or sodium tool. Pregnancy, breastfeeding, illness and children need individual advice. Household oil absorption and recipes vary. Installation was checked for manifest/service-worker readiness in desktop Chromium’s mobile viewport, not physically on Android/iPhone.
+
+More / और uses grouped Food, Learn, Data and About rows with dedicated bilingual sub-pages, editable personal templates/dishes, accordion tips and JSON backup/restore (offline cache v8).

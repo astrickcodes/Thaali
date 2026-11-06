@@ -1,5 +1,5 @@
 'use strict';
-const CACHE='thaali-static-v7';
+const CACHE='thaali-static-v8';
 const FILES=['./','./index.html','./manifest.webmanifest','./icon.svg','./icon-192.png','./icon-512.png'];
 self.addEventListener('install',event=>{
   event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(FILES)).then(()=>self.skipWaiting()));
