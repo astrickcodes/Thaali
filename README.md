@@ -7,7 +7,18 @@ An offline, installable Hindi–English food diary for the Bihari home kitchen. 
 - Open once while online, then install from Chrome’s **Install / Add to home screen** or Safari’s **Share → Add to Home Screen**. Offline cache requires HTTPS or localhost. A normal reload works offline; a forced reload can intentionally bypass a browser’s offline cache.
 - GitHub Pages: create a repository, upload these files at its root, then **Settings → Pages → Deploy from a branch → main / root**. No Actions/build needed. Relative URLs support project paths such as `/thaali-app/`. Live: [astrickcodes.github.io/Thaali/](https://astrickcodes.github.io/Thaali/), served from `main`.
 - Local preview: `python3 -m http.server 8875 --bind 127.0.0.1`, then visit `http://127.0.0.1:8875/`. Do not rely on `file://` for offline installation. Stop the preview with Ctrl-C.
-- The service worker now uses `thaali-static-v2`. Navigations and `index.html` are **network-first**, updating cached HTML when online and falling back to the last copy offline. Other static assets stay **cache-first**. This delivers new dish data to phones on their next online visit/reload after the worker updates, without touching diary storage. After changing static assets, bump `CACHE` again. An already-open tab needs a reload to show new data.
+- The service worker now uses `thaali-static-v4`. Navigations and `index.html` are **network-first**, updating cached HTML when online and falling back to the last copy offline. Other static assets stay **cache-first**. This delivers new dish data to phones on their next online visit/reload after the worker updates, without touching diary storage. After changing static assets, bump `CACHE` again. An already-open tab needs a reload to show new data.
+
+## Plan a day / दिन की योजना
+
+Aaj’s date picker now reaches **seven days ahead**. Food added today or earlier defaults to **Ate**; future additions default to **Plan**. Change that in the dish sheet, then tap **✓** on a planned item when eaten. Only eaten entries affect nutrition totals, charts, streaks and progress; older diaries migrate as eaten. The summary shows the whole plan, eaten kcal and the remaining target.
+
+- Copy yesterday, copy a whole day to a date, or repeat one meal. Whole-day copies become planned; per-meal repeats use the date’s default. **Clear plan** confirms first and keeps eaten entries.
+- Open **Templates** from Aaj or More. Save/name any day, rename/delete personal templates, and apply to today through today + 7. Choose **add** or **replace planned items only**; eaten entries are preserved. Templates and entry status are included in JSON backups, with old backups still accepted.
+- Seven suggested Bihari days include simple home food, a light day, sattu/chana/paneer, litti-chokha, office tiffin, fish/egg and makuni/ghugni. **Fit to my target** previews kcal/protein, scaling grains/dal in half portions (minimum 0.5), keeping vegetable/salad portions and capping oil-heavy staples at two servings. It is an approximate fit, not a clinical menu. Save a suggested day as your own; apply it, edit meals and save a revised template to change portions.
+- Planned-item **Swap** offers up to five same-category alternatives within ±25% kcal, adjusting quantities in half portions. The add sheet shows the viewed day’s remaining allowance and later planned meals against the current profile target; it shows nothing in target-free tracking mode.
+
+Headless laptop Chromium verified tomorrow’s planned additions and tick-to-eaten totals, legacy migration, target fitting, five swap choices, plan replacement preserving eaten items, live allowance, and actual backup export/restore validation without console errors. Screens: [Plan](screens/plan.png), [Templates](screens/templates.png).
 
 ## Food data / method
 
