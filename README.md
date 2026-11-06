@@ -65,3 +65,6 @@ Existing-solution preflight: wger is maintained but server-backed and not a sing
 **Estimates, not medical advice.** Not a clinical diet, micronutrient or sodium tool. Pregnancy, breastfeeding, illness and children need individual advice. Household oil absorption and recipes vary. Installation was checked for manifest/service-worker readiness in desktop Chromium’s mobile viewport, not physically on Android/iPhone.
 
 More / और uses grouped Food, Learn, Data and About rows with dedicated bilingual sub-pages, editable personal templates/dishes, accordion tips and JSON backup/restore (offline cache v8).
+
+Me → Diet filters suggestions only (Veg, Veg + Egg, Non-veg); dishes remain searchable. More → Food → Diet chart fits and edits a seven-day week, sends it to planned meals, and shares text or a printable table.
+Diet preference and weekly chart are kept in validated JSON backups; offline cache is now `thaali-static-v9`.
